@@ -23,6 +23,7 @@
             var actualResult = distanceCalculator.CalculateDistance(_graphData, route);
 
             Assert.AreEqual(9, actualResult);
+
         }
 
         [Test]
