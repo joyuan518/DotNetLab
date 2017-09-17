@@ -1,0 +1,22 @@
+1. The solution contains 3 projects, which are:
+      - "Trains.Main", the entry point of the application.
+      - "Trains.Core", contains the core classes and interfaces to achieve the application functionalities.
+      - "Trains.Test", the unit test projects for "Trains.Core".
+
+   Please use Visual Studio 2015 to open the solution.
+ 
+2. In "Trains.Core", I try to adopt some thoughts of OOD to make the application easy to modify and extend in the future.
+   Add the cache support so that the application can cache its calculation results and return them faster in the next time.
+
+   I have implemented all the functions that are required for the homework "Trains". 
+   The concrete implementations you can find it in "Trains.Core\CalculatorsImplementations\DefaultCalculatorsImplementation.cs".
+   
+   I have added some necessary unit tests for each of the critical methods, but if time allowed, I'm going to add more.
+ 
+3. You should be able to run this program in Visual Studio directly by press "F5", or run the built artifacts outside of it if you want.
+   For now I haven't implemented using the input file to supply the application input data, but that won't take too long.
+
+4. Planned to add better customized exception structure and system logging, but didn't get a chance to complete them.  
+
+5. Sorry I spent sometime to review the theories and algorithm of the Graph, and that kind of delay the progress of the homework. 
+ 
