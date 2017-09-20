@@ -14,52 +14,62 @@
                                                  {int.MaxValue, int.MaxValue, 8, int.MaxValue, 6},
                                                  {int.MaxValue, 3, int.MaxValue, int.MaxValue, int.MaxValue} };
 
-        [Test]
-        public void TestCalculateDistance()
+        [SetUp]
+        public void Setup()
+        {
+
+        }
+
+        [TearDown]
+        public void Cleanup()
+        {
+
+        }
+
+        [TestCase(new[] { 0, 1, 2 }, 9)]
+        public void TestCalculateDistance(int[] route, int expectedResult) 
         {
             var distanceCalculator = _calculatorsFactory.CreateDistanceCalculator();
-            var route = new [] {0, 1, 2};
 
             var actualResult = distanceCalculator.CalculateDistance(_graphData, route);
 
-            Assert.AreEqual(9, actualResult);
-
+            Assert.AreEqual(expectedResult, actualResult);
         }
 
-        [Test]
-        public void TestGetRoutesForExactlyStops()
+        [TestCase(0, 2, 4, 3)]
+        public void TestGetRoutesForExactlyStops(int startingPoint, int endPoint, int exactlyStops, int expectedResult)
         {
             var exactlyStopsRoutesCalculator = _calculatorsFactory.CreateExactlyStopsRoutesCalculator();
-            var actualResult = exactlyStopsRoutesCalculator.GetRoutesForExactlyStops(_graphData, 0, 2, 4);
+            var actualResult = exactlyStopsRoutesCalculator.GetRoutesForExactlyStops(_graphData, startingPoint, endPoint, exactlyStops);
 
-            Assert.AreEqual(3, actualResult);
+            Assert.AreEqual(expectedResult, actualResult);
         }
 
-        [Test]
-        public void TestGetRoutesForMaxDistance()
+        [TestCase(2, 2, 30, 7)]
+        public void TestGetRoutesForMaxDistance(int startingPoint, int endPoint, int maxDistance, int expectedResult)
         {
             var maxDistanceRoutesCalculator = _calculatorsFactory.CreateMaxDistanceRoutesCalculator();
-            var actualResult = maxDistanceRoutesCalculator.GetRoutesForMaxDistance(_graphData, 2, 2, 30);
+            var actualResult = maxDistanceRoutesCalculator.GetRoutesForMaxDistance(_graphData, startingPoint, endPoint, maxDistance);
 
-            Assert.AreEqual(7, actualResult);
+            Assert.AreEqual(expectedResult, actualResult);
         }
 
-        [Test]
-        public void TestGetRoutesForMaxStops()
+        [TestCase(2, 2, 3, 2)]
+        public void TestGetRoutesForMaxStops(int startingPoint, int endPoint, int maxStops, int expectedResult)
         {
             var maxStopsRoutesCalculator = _calculatorsFactory.CreateMaxStopsRoutesCalculator();
-            var actualResult = maxStopsRoutesCalculator.GetRoutesForMaxStops(_graphData, 2, 2, 3);
+            var actualResult = maxStopsRoutesCalculator.GetRoutesForMaxStops(_graphData, startingPoint, endPoint, maxStops);
 
-            Assert.AreEqual(2, actualResult);
+            Assert.AreEqual(expectedResult, actualResult);
         }
 
-        [Test]
-        public void TestGetShortestRouteDistance()
+        [TestCase(1, 1, 9)]
+        public void TestGetShortestRouteDistance(int startingPoint, int endPoint, int expectedResult)
         {
             var shortestDistanceCalculator = _calculatorsFactory.CreateShortestDistanceCalculator();
-            var actualResult = shortestDistanceCalculator.GetShortestRouteDistance(_graphData, 1, 1);
+            var actualResult = shortestDistanceCalculator.GetShortestRouteDistance(_graphData, startingPoint, endPoint);
 
-            Assert.AreEqual(9, actualResult);
+            Assert.AreEqual(expectedResult, actualResult);
         }
     }
 }
